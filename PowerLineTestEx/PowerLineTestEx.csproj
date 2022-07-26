@@ -47,8 +47,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicles\FreightCar.cs" />
-    <Compile Include="Vehicles\Passenger.cs" />
-    <Compile Include="Vehicles\Sport.cs" />
+    <Compile Include="Vehicles\PassengerCar.cs" />
+    <Compile Include="Vehicles\SportCar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,21 +9,21 @@ namespace PowerLineTestEx.Vehicles
     internal class FreightCar : Vehicle
     {
         public override string Type { get; set; } = "Freight Car";
-        public int MaxLoadCapacity { get; set; }
         private int _LoadedCargo = 0;
         public int LoadedCargo
         {
             get { return _LoadedCargo; }
-            set { _LoadedCargo = (value > MaxLoadCapacity) ? MaxLoadCapacity : value; }
+            set 
+            {
+                var rem = _LoadedCargo;
+                _LoadedCargo = value; 
+                if (DistanceReduceFactor() <= 0)
+                {
+                    Console.WriteLine($"This cargo ({value}) is unacceptable! The car will not be able to move");
+                    _LoadedCargo = rem;
+                }
+            }
         }
-        protected override double DistanceReduceFactor() => 1.0 - 0.04 * ( (double)LoadedCargo / 200 );
-        public bool IsTakeAFullLoad(double Distance)
-        {
-            var remCargo = LoadedCargo;
-            LoadedCargo = MaxLoadCapacity;
-            bool result = (RemainingDistanceGross() > Distance) ? true : false;
-            LoadedCargo = remCargo;
-            return result;            
-        }        
+        protected override double DistanceReduceFactor() => 1.0 - 0.04 * ( (double)LoadedCargo / 200 );   
     }
 }

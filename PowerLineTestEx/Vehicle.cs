@@ -8,6 +8,7 @@ namespace PowerLineTestEx
 {
     internal class Vehicle
     {
+        protected Vehicle() { }
         public virtual string Type { get; set; } = "Abstract";    
         /// <summary>
         /// Litres per 100 kilometres
@@ -34,7 +35,7 @@ namespace PowerLineTestEx
             }
         }
 
-        protected virtual double DistanceReduceFactor() => 1.0;
+        protected virtual double DistanceReduceFactor() => 1.0; // Realize by derived classes
 
         /// <summary>
         /// Remaining distance taking into account the effect of passengers and cargo

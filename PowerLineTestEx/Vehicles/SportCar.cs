@@ -9,5 +9,6 @@ namespace PowerLineTestEx.Vehicles
     internal class SportCar : Vehicle
     {
         public override string Type { get; set; } = "Sport Car";
+        // Just purity
     }
 }

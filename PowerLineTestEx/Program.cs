@@ -16,14 +16,12 @@ namespace PowerLineTestEx
                 {
                     AvgFuelConsumption = 8,
                     FuelTankVol = 70,
-                    MaxPassengers = 4,
                     Speed = 80
                 },
                 new FreightCar()
                 {
                     AvgFuelConsumption = 25,
                     FuelTankVol = 300,
-                    MaxLoadCapacity = 4000,
                     Speed = 60
                 },
                 new SportCar()
@@ -48,10 +46,9 @@ namespace PowerLineTestEx
                         Console.WriteLine("Put 50 litres in tank...");
                         p.FuelInTank = 50;
                         Console.WriteLine($"Fuel in tank: {p.FuelInTank}");
-                        Console.WriteLine($"Maximum passengers: {p.MaxPassengers}");
                         Console.WriteLine($"Now is {p.NumberOfPassengers} passengers in it");
-                        Console.WriteLine($"Push {p.MaxPassengers + 2} passengers!");
-                        p.NumberOfPassengers = p.MaxPassengers + 2;
+                        Console.WriteLine($"Push 25 passengers!");
+                        p.NumberOfPassengers = 25;
                         Console.WriteLine($"But is {p.NumberOfPassengers} passengers in it");
                         Console.WriteLine($"Remaining distance is: {p.RemainingDistanceGross()} km");
                         Console.WriteLine($"Now take only one passenger...");
@@ -78,14 +75,13 @@ namespace PowerLineTestEx
                         Console.WriteLine("Put 200 litres in tank...");
                         f.FuelInTank = 200;
                         Console.WriteLine($"Fuel in tank: {f.FuelInTank}");
-                        Console.WriteLine($"Maximum load capacity: {f.MaxLoadCapacity}");
                         Console.WriteLine($"Now loaded cargo {f.LoadedCargo} kg");
-                        Console.WriteLine($"Load {f.MaxLoadCapacity + 500} kg!");
-                        f.LoadedCargo = f.MaxLoadCapacity + 500;
+                        Console.WriteLine($"Load 8000 kg!");
+                        f.LoadedCargo = 8000;
                         Console.WriteLine($"But is {f.LoadedCargo} kg in it");
                         Console.WriteLine($"Now remaining distance is: {f.RemainingDistanceGross()} km");
-                        Console.WriteLine($"Now take {f.MaxLoadCapacity - 500} kg of cargo");
-                        f.LoadedCargo = f.MaxLoadCapacity - 500;
+                        Console.WriteLine($"Now take 3000 kg of cargo");
+                        f.LoadedCargo = 3000;
                         Console.WriteLine($"And remaining distance is: {f.RemainingDistanceGross()} km");
                         travelDist = f.RemainingDistanceGross() - 0.2 * f.RemainingDistanceGross();
                         Console.WriteLine($"If travel distance is {travelDist} km, and car speed is {f.Speed} km/h. " +
@@ -100,9 +96,6 @@ namespace PowerLineTestEx
                         Console.WriteLine($"Now fuel in tank: {f.FuelInTank} and remaining distance is: {f.RemainingDistanceGross()}");
                         Console.WriteLine($"If travel distance is {travelDist} km, and car speed is {f.Speed} km/h. " +
                             $"Travel time is: {f.TravelTime(travelDist)} and fuel ran out but we reach endpoint!");
-                        Console.WriteLine($"Now if take a full load {travelDist} km is reacheble? - {f.IsTakeAFullLoad(travelDist)}");
-                        travelDist = f.RemainingDistanceGross() - 0.5 * f.RemainingDistanceGross();
-                        Console.WriteLine($"And if take a full load {travelDist} km is reacheble? - {f.IsTakeAFullLoad(travelDist)}");
                         break;
                     case SportCar s:
                         Console.WriteLine("Put 100 litres in tank...");

@@ -9,11 +9,19 @@ namespace PowerLineTestEx.Vehicles
     internal class PassengerCar : Vehicle
     {
         public override string Type { get; set; } = "Passenger Car";
-        public int MaxPassengers { get; set; }
         private int _NumberOfPassengers = 0;
         public int NumberOfPassengers {
             get { return _NumberOfPassengers; }
-            set { _NumberOfPassengers = (value > MaxPassengers) ?  MaxPassengers : value; }
+            set 
+            {
+                var rem = _NumberOfPassengers;
+                _NumberOfPassengers = value; 
+                if (DistanceReduceFactor() <= 0)
+                {
+                    Console.WriteLine($"This number of passengers ({value}) is unacceptable! The car will not be able to move");
+                    _NumberOfPassengers = rem;
+                }
+            }
         }
         protected override double DistanceReduceFactor() => 1.0 - 0.06 * (double)NumberOfPassengers;
     }
